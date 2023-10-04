@@ -10,7 +10,7 @@ let availbelQuestions = [];
 
 let questions = [
     {
-        "question":"What is the range of values that can be stored by int datatype in C?",
+        question:"What is the range of values that can be stored by int datatype in C?",
         choice1:"-(2^31) to (2^31) - 1.",
         choice2:"-256 to 255.",
         choice3:"-(2^61) to (2^61) - 1.",
