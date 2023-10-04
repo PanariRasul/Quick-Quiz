@@ -1,6 +1,6 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName(".choice-text"));
-//console.log(choices);
+console.log(choices);
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -153,7 +153,7 @@ getNewQuestion = () => {
 
 choices.forEach (choice => {
     const number = choice.dataset("number");
-    choice.innerText = currentQuestion["choice" + number];
+    choice.innerText = currentQuestion["choices" + number];
 })
 
 startGame();

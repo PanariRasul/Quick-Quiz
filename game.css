@@ -28,10 +28,11 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    padding: 50px;
     justify-content:center;
     align-items: center;
     min-width: 80rem;
-    /* margin: 1 auto; */
-    margin: 50px;
+    margin: 1 auto;
+    /* margin: 50px; */
 }
 
