@@ -1,9 +1,9 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName('choice-text'));
-console.log(choices);
+//console.log(choices);
 
 let currentQuestion = {};
-let acceptingAnswers = true;
+let acceptingAnswers = false;
 let  score = 0;
 let questionCounter = 0;
 let availbelQuestions = [];
@@ -171,6 +171,21 @@ choices.forEach((choice) => {
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
+
+        // const classToApply ="inncorrect";
+        //     if(selectedAnswer == currentQuestion.answer){
+        //         classToApply = "correct";
+        //     }
+
+
+        
+        const classToApply =
+        selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+        
+            console.log(classToApply);
+
+
+
         getNewQuestion();
     });
 });
