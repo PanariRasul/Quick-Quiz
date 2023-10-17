@@ -1,5 +1,5 @@
 const question = document.getElementById("question");
-const choices = Array.from(document.getElementsByClassName(".choice-text"));
+const choices = Array.from(document.getElementsByClassName('choice-text'));
 console.log(choices);
 
 let currentQuestion = {};
@@ -144,16 +144,57 @@ startGame = () => {
     getNewQuestion();
 }
 
+
 getNewQuestion = () => {
+    if (availbelQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        //go to the end page
+        return window.location.assign('/end.html');
+    }
     questionCounter++;
     const questionIndex = Math.floor(Math.random()* availbelQuestions.length);
     currentQuestion = availbelQuestions[questionIndex];
     question.innerText = currentQuestion.question;
-}
 
-choices.forEach (choice => {
-    const number = choice.dataset("number");
-    choice.innerText = currentQuestion["choices" + number];
-})
+    choices.forEach((choice) => {
+        const number = choice.dataset['number'];
+        choice.innerText = currentQuestion['choice' + number];
+    });
+
+    availbelQuestions.splice(questionIndex, 1);
+    acceptingAnswers = true;
+};
+
+choices.forEach((choice) => {
+    choice.addEventListener('click', (e) => {
+        if (!acceptingAnswers) return;
+
+        acceptingAnswers = false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset['number'];
+        getNewQuestion();
+    });
+});
+
+
+
+
+
+// getNewQuestion = () => {
+//     questionCounter++;
+//     const questionIndex = Math.floor(Math.random()* availbelQuestions.length);
+//     currentQuestion = availbelQuestions[questionIndex];
+//     question.innerText = currentQuestion.question;
+
+// }
+
+// choices.forEach ((choice) => {
+//     const number = choice.dataset["number"];
+//     choice.innerText = currentQuestion["choice" + number];
+// })
+
+// choices.forEach((choice) => {
+//     const number = choice.dataset['number'];
+//     choice.innerText = currentQuestion['choice' + number];
+// });
 
 startGame();
